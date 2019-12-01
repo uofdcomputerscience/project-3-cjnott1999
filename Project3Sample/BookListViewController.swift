@@ -10,7 +10,48 @@ import UIKit
 
 class BookListViewController: UIViewController {
     
+    @IBOutlet var tableOfBooks: UITableView!
+    let bookService = BookService.shared
     
+    override func viewDidLoad() {
+        tableOfBooks.dataSource = self
+        fetchBooks()
+    }
     
-    
+    func fetchBooks() {
+        print("Did we get here")
+        bookService.fetchBooks { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableOfBooks.reloadData()
+            }
+        }
+    }
 }
+
+extension BookListViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return bookService.books.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BookCell")!
+        let book = bookService.books[indexPath.item]
+        let bookTitle = book.title
+        
+        if let bookCell = cell as? BookCell{
+            bookService.image(for: book) { (retrievedBook, image) in
+                          if book.id == retrievedBook.id {
+                              DispatchQueue.main.async {
+                                bookCell.bookCoverImage.image = image
+                                bookCell.bookTitleLabel.text = bookTitle
+                              }
+                          }
+                      }
+        }
+        
+        return cell
+      
+    }
+}
+    
+
