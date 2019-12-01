@@ -12,4 +12,6 @@ class BookCell:UITableViewCell {
     
     @IBOutlet weak var bookCoverImage: UIImageView!
     @IBOutlet weak var bookTitleLabel: UILabel!
+    
+
 }

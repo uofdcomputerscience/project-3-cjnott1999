@@ -11,18 +11,66 @@
         <!--Reviews-->
         <scene sceneID="z7Y-cU-ckh">
             <objects>
-                <viewController id="C1o-0j-FFE" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="SJ0-ay-fE2">
+                <viewController id="C1o-0j-FFE" customClass="ReviewListViewController" customModule="TLDR" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Tgi-GT-OSv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="jad-t4-Nig"/>
-                    </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReviewCell" rowHeight="134" id="JIv-0f-LbM" customClass="ReviewCell" customModule="TLDR" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="134"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JIv-0f-LbM" id="BnU-bn-nAj">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="134"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="240" translatesAutoresizingMaskIntoConstraints="NO" id="LSS-iG-fgJ">
+                                            <rect key="frame" x="45" y="25" width="324" height="20.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkt-HJ-OTh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDu-N7-iSL">
+                                                    <rect key="frame" x="282" y="0.0" width="42" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDo-ay-Txa">
+                                            <rect key="frame" x="186" y="88.5" width="42" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="xDo-ay-Txa" secondAttribute="bottom" constant="25" id="ANc-sR-ysk"/>
+                                        <constraint firstItem="LSS-iG-fgJ" firstAttribute="centerX" secondItem="BnU-bn-nAj" secondAttribute="centerX" id="JWB-DO-pW5"/>
+                                        <constraint firstItem="xDo-ay-Txa" firstAttribute="centerX" secondItem="BnU-bn-nAj" secondAttribute="centerX" id="syM-rR-Wz0"/>
+                                        <constraint firstItem="LSS-iG-fgJ" firstAttribute="top" secondItem="BnU-bn-nAj" secondAttribute="top" constant="25" id="wHs-LS-EiB"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="bookAuthorLabel" destination="WDu-N7-iSL" id="YDl-cO-6b0"/>
+                                    <outlet property="reviewAuthorLabel" destination="xDo-ay-Txa" id="KHi-6u-oGr"/>
+                                    <outlet property="reviewTitleLabel" destination="bkt-HJ-OTh" id="Ber-DH-kwu"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
                     <tabBarItem key="tabBarItem" title="Reviews" id="V0V-TU-9AM"/>
+                    <connections>
+                        <outlet property="reviewsTable" destination="Tgi-GT-OSv" id="rq1-vm-1wk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8NN-7h-iqb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-382" y="243"/>
+            <point key="canvasLocation" x="-384.05797101449281" y="343.52678571428572"/>
         </scene>
         <!--Books-->
         <scene sceneID="05U-fx-X9X">

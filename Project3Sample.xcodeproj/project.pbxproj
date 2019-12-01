@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		231387332393513500EC797A /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231387322393513500EC797A /* BookCell.swift */; };
+		23EDC8F723938DFD008F1C1A /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23EDC8F623938DFD008F1C1A /* ReviewCell.swift */; };
 		4670DA72238099BC00487601 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670DA71238099BC00487601 /* AppDelegate.swift */; };
 		4670DA79238099BC00487601 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4670DA77238099BC00487601 /* Main.storyboard */; };
 		4670DA7B238099C000487601 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4670DA7A238099C000487601 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		231387322393513500EC797A /* BookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
+		23EDC8F623938DFD008F1C1A /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		4670DA6E238099BC00487601 /* TLDR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TLDR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4670DA71238099BC00487601 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4670DA78238099BC00487601 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -87,11 +89,12 @@
 				4670DA8923809A0500487601 /* BookInputViewController.swift */,
 				4670DA8B23809A1C00487601 /* ReviewListViewController.swift */,
 				4670DA8D23809A2800487601 /* ReviewDetailViewController.swift */,
+				23EDC8F623938DFD008F1C1A /* ReviewCell.swift */,
 				4670DA8F23809A3300487601 /* ReviewInputViewController.swift */,
-				4670DA9123809A3A00487601 /* Book.swift */,
-				4670DA9323809A4700487601 /* Review.swift */,
 				4670DA9523809A5000487601 /* BookService.swift */,
 				4670DA9723809A5900487601 /* ReviewService.swift */,
+				4670DA9323809A4700487601 /* Review.swift */,
+				4670DA9123809A3A00487601 /* Book.swift */,
 				4670DA992380A28200487601 /* DataTestViewController.swift */,
 			);
 			path = Project3Sample;
@@ -181,6 +184,7 @@
 				4670DA8E23809A2800487601 /* ReviewDetailViewController.swift in Sources */,
 				4670DA9223809A3A00487601 /* Book.swift in Sources */,
 				4670DA88238099F800487601 /* BookDetailViewController.swift in Sources */,
+				23EDC8F723938DFD008F1C1A /* ReviewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
