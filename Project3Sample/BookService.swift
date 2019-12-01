@@ -20,7 +20,10 @@ class BookService {
         let task = URLSession(configuration: .ephemeral).dataTask(with: url) { [weak self] (data, response, error) in
             if let data = data {
                 if let newBooks = try? JSONDecoder().decode([Book].self, from: data) {
-                    self?.books = newBooks
+                    //Filter Books that do not have a valid imageURL
+                    //Right now this works by checking the suffix
+                    //This will be improved later by checking the ImageData Received
+                    self?.books = newBooks.filter({$0.imageURLString?.suffix(3) == "jpg"}).removingDuplicates()
                     completion()
                 }
             }
@@ -47,8 +50,10 @@ class BookService {
         let task = URLSession(configuration: .default).dataTask(with: imageURL) { [weak self] (data, response, error) in
             guard let data = data else { completion(book, nil); return }
             if let image = UIImage(data: data) {
-                self?.bookImages[imageURL] = image
-                completion(book, image)
+                DispatchQueue.main.async {
+                    self?.bookImages[imageURL] = image
+                    completion(book, image)
+                }
             } else {
                 completion(book, nil)
             }
@@ -57,3 +62,18 @@ class BookService {
     }
     
 }
+
+//Array extention to filter Books that have the same title
+extension Array where Element == Book {
+    func removingDuplicates() -> [Element] {
+        var addedDict = [String: Bool]()
+
+        return filter {
+            addedDict.updateValue(true, forKey: $0.title) == nil
+        }
+    }
+    mutating func removeDuplicates() {
+        self = self.removingDuplicates()
+    }
+}
+

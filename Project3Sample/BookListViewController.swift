@@ -34,18 +34,18 @@ extension BookListViewController: UITableViewDataSource {
         return bookService.books.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableOfBooks.dequeueReusableCell(withIdentifier: "BookCell")!
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        let cell = tableView.dequeueReusableCell(withIdentifier:"BookCell")!
         let book = bookService.books[indexPath.item]
         let bookTitle = book.title
         
         if let bookCell = cell as? BookCell{
+            bookCell.book = book
             bookService.image(for: book) { (retrievedBook, image) in
-                          if book.id == retrievedBook.id {
+                if bookCell.book?.id == retrievedBook.id {
                               DispatchQueue.main.async {
-                                    bookCell.bookCoverImage.image = image
-                                    bookCell.bookTitleLabel.text = bookTitle
+                                bookCell.bookCoverImage.image = image
+                                bookCell.bookTitleLabel.text = bookTitle
                               }
                           }
                       }

@@ -15,12 +15,8 @@ struct Book: Codable {
     let published: String
     let imageURLString: String?
     
-   var imageURL: URL? {
-          if let url = imageURLString {
-              return URL(string: url)
-          }
-          else {
-              return URL(string: "https://www.lahsa.org/service/get-image?id=114d4059-8929-4bbf-bd02-a7c8b1aa1310.jpg")
-          }
+    var imageURL: URL? {
+        return URL(string: imageURLString ?? "https://semantic-ui.com/images/wireframe/image.png")
     }
 }
+
