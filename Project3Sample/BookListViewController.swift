@@ -13,19 +13,39 @@ class BookListViewController: UIViewController {
     @IBOutlet var tableOfBooks: UITableView!
     let bookService = BookService.shared
     
+    
     override func viewDidLoad() {
         tableOfBooks.dataSource = self
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        tableOfBooks.refreshControl = refreshControl
+        
+        
         fetchBooks()
        
     }
+
+
     
     func fetchBooks() {
         bookService.fetchBooks { [weak self] in
-            print(String(describing: self?.bookService.books))
+
             DispatchQueue.main.async {
                 self?.tableOfBooks.reloadData()
         }
         }
+    }
+    
+    @objc func refresh(_ refreshControl: UIRefreshControl){
+      bookService.fetchBooks { [weak self] in
+
+              DispatchQueue.main.async {
+                  self?.tableOfBooks.reloadData()
+                  refreshControl.endRefreshing()
+          }
+        
+          }
     }
 }
 
@@ -34,7 +54,7 @@ extension BookListViewController: UITableViewDataSource {
         return bookService.books.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier:"BookCell")!
         let book = bookService.books[indexPath.item]
         let bookTitle = book.title

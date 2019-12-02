@@ -25,7 +25,6 @@ class ReviewListViewController: UIViewController {
     
     func fetchReviews() {
            reviewService.fetchReviews { [weak self] in
-               print(String(describing: self?.reviewService.reviews))
                DispatchQueue.main.async {
                 self?.reviewsTable.reloadData()
             }
