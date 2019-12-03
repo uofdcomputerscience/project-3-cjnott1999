@@ -20,10 +20,7 @@ class BookService {
         let task = URLSession(configuration: .ephemeral).dataTask(with: url) { [weak self] (data, response, error) in
             if let data = data {
                 if let newBooks = try? JSONDecoder().decode([Book].self, from: data) {
-                    //Filter Books that do not have a valid imageURL
-                    //Right now this works by checking the suffix
-                    //This will be improved later by checking the ImageData Received
-                    self?.books = newBooks.filter({$0.imageURLString?.suffix(3) == "jpg"}).removingDuplicates()
+                    self?.books = newBooks
                     completion()
                 }
             }

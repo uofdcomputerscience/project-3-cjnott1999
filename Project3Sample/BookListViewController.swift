@@ -17,8 +17,8 @@ class BookListViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        //Set the delegates and Data Sources
         tableOfBooks.dataSource = self
-        tableOfBooks.allowsSelection = true
         tableOfBooks.delegate = self
         
         let refreshControl = UIRefreshControl()

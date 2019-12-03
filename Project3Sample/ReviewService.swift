@@ -21,7 +21,8 @@ class ReviewService {
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .iso8601
                 if let newReviews = try? decoder.decode([Review].self, from: data) {
-                    //self?.reviews = newReviews
+                   
+                    //Filter the sample review, sorry Russell
                     self?.reviews = newReviews.filter({$0.reviewer != "Russell"})
                     completion()
                 }

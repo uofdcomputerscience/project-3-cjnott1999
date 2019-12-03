@@ -20,11 +20,25 @@ class ReviewDetailViewController: UIViewController {
     var reviewAuthor = String()
     var review = String()
     
+    
+    var reviewDate: Date?
+    let formatter = DateFormatter()
+
+    
+    
     override func viewWillAppear(_ animated: Bool) {
+        formatter.dateFormat = "MMMM dd YYYY"
+        var dateString = ""
+        if reviewDate != nil{
+         dateString = " on " + formatter.string(from: reviewDate!)
+        }
+        
         reviewTitleLabel.text = reviewTitle
-        reviewAuthorLabel.text = "By " + reviewAuthor
+        reviewAuthorLabel.text = "By " + reviewAuthor + dateString
         reviewText.text = review
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

@@ -54,10 +54,11 @@ class ReviewListViewController: UIViewController {
             let destination = segue.destination as? ReviewDetailViewController
         {
            let selectedCell = reviewsTable.cellForRow(at: reviewsTable.indexPathForSelectedRow!) as! ReviewCell
+            
             destination.reviewAuthor = selectedCell.review!.reviewer
             destination.reviewTitle = selectedCell.review!.title
             destination.review = selectedCell.review!.body
-            
+            destination.reviewDate = selectedCell.review!.date
             
         }
     }
@@ -74,16 +75,16 @@ extension ReviewListViewController: UITableViewDataSource, UITableViewDelegate{
         
         let cell = reviewsTable.dequeueReusableCell(withIdentifier: "ReviewCell")!
         let review = reviewService.reviews[indexPath.item]
-        let book = bookService.books.first(where: {$0.id == review.bookId})!
+        let book = bookService.books.first(where: {$0.id == review.bookId})
         
         if let reviewCell = cell as? ReviewCell{
             reviewCell.book = book
             reviewCell.review = review
-            bookService.image(for: book) { (retrievedBook, image) in
+            bookService.image(for: book!) { (retrievedBook, image) in
                 if reviewCell.book?.id == retrievedBook.id {
                               DispatchQueue.main.async {
                                 reviewCell.bookCoverImageView.image = image
-                                reviewCell.bookTitleLabel.text = book.title
+                                reviewCell.bookTitleLabel.text = book!.title
                                 reviewCell.reviewAuthorLabel.text = review.reviewer
                               }
                           }
