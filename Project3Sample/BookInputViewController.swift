@@ -42,7 +42,7 @@ class BookInputViewController: UIViewController {
         bookService.createBook(book: book) {
                   print("book created")
         }
-        //self.dismiss(animated: true)
+        self.dismiss(animated: true)
         
     }
     
@@ -79,5 +79,7 @@ extension BookInputViewController: UITextFieldDelegate{
     func textFieldDidEndEditing(_ textField: UITextField) {
         enableSubmitButton()
     }
+    
+    
     
 }

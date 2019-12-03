@@ -15,12 +15,14 @@ class BookDetailViewController: UIViewController {
     @IBOutlet weak var bookTitleLabel: UILabel!
     @IBOutlet weak var bookAuthorLabel: UILabel!
     @IBOutlet weak var bookPublicationYearLabel: UILabel!
+    @IBOutlet weak var writeButton: UIButton!
     
     
     var bookCoverImage = UIImage()
     var bookTitle = String()
     var bookPublicationYear = String()
     var bookAuthor = String()
+    var bookId = Int()
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -36,6 +38,12 @@ class BookDetailViewController: UIViewController {
         super .viewDidLoad()
     }
     
+    @IBAction func buttonTapped(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ReviewInputViewController") as! ReviewInputViewController
+        vc.bookId = bookId
+        vc.bookTitle = bookTitle
+        self.present(vc, animated: true, completion: nil)
+    }
     
     
     

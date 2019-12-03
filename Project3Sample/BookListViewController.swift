@@ -47,6 +47,7 @@ class BookListViewController: UIViewController {
             destination.bookTitle = selectedCell.book?.title ?? ""
             destination.bookAuthor = selectedCell.book?.author ?? ""
             destination.bookPublicationYear = selectedCell.book?.published ?? ""
+            destination.bookId = selectedCell.book!.id!
         }
     }
 
@@ -88,7 +89,7 @@ extension BookListViewController: UITableViewDataSource, UITableViewDelegate {
             bookService.image(for: book) { (retrievedBook, image) in
                 if bookCell.book?.id == retrievedBook.id {
                               DispatchQueue.main.async {
-                                bookCell.bookCoverImage.image = image
+                                bookCell.bookCoverImage.image = image ?? UIImage(imageLiteralResourceName: "notfound")
                                 bookCell.bookTitleLabel.text = bookTitle
                               }
                           }

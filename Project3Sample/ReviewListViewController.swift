@@ -22,6 +22,10 @@ class ReviewListViewController: UIViewController {
         reviewsTable.dataSource = self
         reviewsTable.delegate = self
         
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        reviewsTable.refreshControl = refreshControl
+        
         fetchReviews()
         
     }
@@ -34,6 +38,16 @@ class ReviewListViewController: UIViewController {
             }
            }
        }
+    
+    @objc func refresh(_ refreshControl: UIRefreshControl){
+      reviewService.fetchReviews{ [weak self] in
+
+              DispatchQueue.main.async {
+                  self?.reviewsTable.reloadData()
+                  refreshControl.endRefreshing()
+          }
+        }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == reviewSegue,

@@ -22,7 +22,7 @@ class ReviewDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         reviewTitleLabel.text = reviewTitle
-        reviewAuthorLabel.text = reviewAuthor
+        reviewAuthorLabel.text = "By " + reviewAuthor
         reviewText.text = review
     }
     override func viewDidLoad() {
