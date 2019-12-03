@@ -20,7 +20,7 @@ class ReviewListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpViewController
+        setUpViewController()
 
         
     }
