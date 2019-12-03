@@ -15,19 +15,28 @@ class ReviewListViewController: UIViewController {
     let reviewService = ReviewService.shared
     let bookService = BookService.shared
     let reviewSegue = "ReviewSegue"
+    let refreshControl = UIRefreshControl()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpViewController
+
+        
+    }
+    
+    //Sets up the current ViewController
+    func setUpViewController(){
+        
+        //Set delegates and DataSources
         reviewsTable.dataSource = self
         reviewsTable.delegate = self
         
-        let refreshControl = UIRefreshControl()
+        
         refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
         reviewsTable.refreshControl = refreshControl
         
         fetchReviews()
-        
     }
     
     

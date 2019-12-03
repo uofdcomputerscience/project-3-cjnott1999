@@ -10,30 +10,39 @@ import UIKit
 
 class BookListViewController: UIViewController {
     
+    //Outlets
     @IBOutlet var tableOfBooks: UITableView!
+    
+    //Fields
     let bookService = BookService.shared
     let bookSegueIdentifier = "BookSegue"
     var selectedCell = BookCell()
+    let refreshControl = UIRefreshControl()
     
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        setUpViewController()
+    }
+    
+    
+    //Sets up the current ViewController
+    func setUpViewController() {
+        
         //Set the delegates and Data Sources
         tableOfBooks.dataSource = self
         tableOfBooks.delegate = self
         
-        let refreshControl = UIRefreshControl()
+        //Set up the Refresh Controller
         refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
         tableOfBooks.refreshControl = refreshControl
         
+        //Add the navigation + button to the right side of the control bar
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
         
+        //Fetch the books from the service
         fetchBooks()
-       
-    }
-    
-    @objc func addTapped(){
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "BookInputViewController") as! BookInputViewController
-        self.present(vc, animated: true, completion: nil)
+        
         
     }
     
@@ -52,7 +61,7 @@ class BookListViewController: UIViewController {
     }
 
 
-    
+    //Fetch books from the BookService and reload the tableView
     func fetchBooks() {
         bookService.fetchBooks { [weak self] in
 
@@ -62,18 +71,27 @@ class BookListViewController: UIViewController {
         }
     }
     
+    //When the refresh controller is called by pulling down, refresh
     @objc func refresh(_ refreshControl: UIRefreshControl){
       bookService.fetchBooks { [weak self] in
-
               DispatchQueue.main.async {
                   self?.tableOfBooks.reloadData()
                   refreshControl.endRefreshing()
           }
+        }
+    }
+    
+    //When the + button is tapped, present a BookInputViewController
+    @objc func addTapped(){
         
-          }
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "BookInputViewController") as! BookInputViewController
+        self.present(vc, animated: true, completion: nil)
+        
     }
 }
 
+
+//DataSources and Delegates
 extension BookListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bookService.books.count
@@ -90,7 +108,9 @@ extension BookListViewController: UITableViewDataSource, UITableViewDelegate {
                 if bookCell.book?.id == retrievedBook.id {
                               DispatchQueue.main.async {
                                 bookCell.bookCoverImage.image = image ?? UIImage(imageLiteralResourceName: "notfound")
+                                
                                 bookCell.bookTitleLabel.text = bookTitle
+                                
                               }
                           }
                       }
@@ -105,6 +125,7 @@ extension BookListViewController: UITableViewDataSource, UITableViewDelegate {
     }
    
 }
+
 
 
     

@@ -18,6 +18,7 @@ class BookDetailViewController: UIViewController {
     @IBOutlet weak var writeButton: UIButton!
     
     
+    //Mandated Fields
     var bookCoverImage = UIImage()
     var bookTitle = String()
     var bookPublicationYear = String()
@@ -25,7 +26,7 @@ class BookDetailViewController: UIViewController {
     var bookId = Int()
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        //Set the fields before the view appears
         bookCoverImageView.image = bookCoverImage
         bookTitleLabel.text = bookTitle
         bookPublicationYearLabel.text = bookPublicationYear

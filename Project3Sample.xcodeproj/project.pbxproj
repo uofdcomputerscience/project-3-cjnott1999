@@ -57,6 +57,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23155CF22396B31000CD2AAA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4670DA9523809A5000487601 /* BookService.swift */,
+				4670DA9723809A5900487601 /* ReviewService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		23155CF32396B34200CD2AAA /* TableView Cells */ = {
+			isa = PBXGroup;
+			children = (
+				23EDC8F623938DFD008F1C1A /* ReviewCell.swift */,
+				231387322393513500EC797A /* BookCell.swift */,
+			);
+			path = "TableView Cells";
+			sourceTree = "<group>";
+		};
+		23155CF42396B35B00CD2AAA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4670DA9323809A4700487601 /* Review.swift */,
+				4670DA9123809A3A00487601 /* Book.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		23155CF52396B37400CD2AAA /* DetailViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4670DA87238099F800487601 /* BookDetailViewController.swift */,
+				4670DA8D23809A2800487601 /* ReviewDetailViewController.swift */,
+			);
+			path = DetailViewControllers;
+			sourceTree = "<group>";
+		};
+		23155CF62396B38400CD2AAA /* InputViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4670DA8923809A0500487601 /* BookInputViewController.swift */,
+				4670DA8F23809A3300487601 /* ReviewInputViewController.swift */,
+			);
+			path = InputViewControllers;
+			sourceTree = "<group>";
+		};
+		23155CF72396B3A500CD2AAA /* ListViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4670DA85238099DC00487601 /* BookListViewController.swift */,
+				4670DA8B23809A1C00487601 /* ReviewListViewController.swift */,
+			);
+			path = ListViewControllers;
+			sourceTree = "<group>";
+		};
 		4670DA65238099BC00487601 = {
 			isa = PBXGroup;
 			children = (
@@ -78,21 +132,15 @@
 			children = (
 				4670DA71238099BC00487601 /* AppDelegate.swift */,
 				4670DA77238099BC00487601 /* Main.storyboard */,
-				4670DA7A238099C000487601 /* Assets.xcassets */,
 				4670DA7C238099C000487601 /* LaunchScreen.storyboard */,
 				4670DA7F238099C000487601 /* Info.plist */,
-				4670DA85238099DC00487601 /* BookListViewController.swift */,
-				4670DA8B23809A1C00487601 /* ReviewListViewController.swift */,
-				4670DA87238099F800487601 /* BookDetailViewController.swift */,
-				4670DA8D23809A2800487601 /* ReviewDetailViewController.swift */,
-				4670DA8923809A0500487601 /* BookInputViewController.swift */,
-				4670DA8F23809A3300487601 /* ReviewInputViewController.swift */,
-				4670DA9523809A5000487601 /* BookService.swift */,
-				4670DA9723809A5900487601 /* ReviewService.swift */,
-				23EDC8F623938DFD008F1C1A /* ReviewCell.swift */,
-				231387322393513500EC797A /* BookCell.swift */,
-				4670DA9323809A4700487601 /* Review.swift */,
-				4670DA9123809A3A00487601 /* Book.swift */,
+				4670DA7A238099C000487601 /* Assets.xcassets */,
+				23155CF72396B3A500CD2AAA /* ListViewControllers */,
+				23155CF52396B37400CD2AAA /* DetailViewControllers */,
+				23155CF62396B38400CD2AAA /* InputViewControllers */,
+				23155CF32396B34200CD2AAA /* TableView Cells */,
+				23155CF22396B31000CD2AAA /* Services */,
+				23155CF42396B35B00CD2AAA /* Models */,
 			);
 			path = Project3Sample;
 			sourceTree = "<group>";
