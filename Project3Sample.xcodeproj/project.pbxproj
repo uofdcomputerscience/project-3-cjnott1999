@@ -23,7 +23,6 @@
 		4670DA9423809A4700487601 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670DA9323809A4700487601 /* Review.swift */; };
 		4670DA9623809A5000487601 /* BookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670DA9523809A5000487601 /* BookService.swift */; };
 		4670DA9823809A5900487601 /* ReviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670DA9723809A5900487601 /* ReviewService.swift */; };
-		4670DA9A2380A28200487601 /* DataTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670DA992380A28200487601 /* DataTestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +44,6 @@
 		4670DA9323809A4700487601 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		4670DA9523809A5000487601 /* BookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookService.swift; sourceTree = "<group>"; };
 		4670DA9723809A5900487601 /* ReviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewService.swift; sourceTree = "<group>"; };
-		4670DA992380A28200487601 /* DataTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +93,6 @@
 				231387322393513500EC797A /* BookCell.swift */,
 				4670DA9323809A4700487601 /* Review.swift */,
 				4670DA9123809A3A00487601 /* Book.swift */,
-				4670DA992380A28200487601 /* DataTestViewController.swift */,
 			);
 			path = Project3Sample;
 			sourceTree = "<group>";
@@ -176,7 +173,6 @@
 				4670DA86238099DC00487601 /* BookListViewController.swift in Sources */,
 				4670DA72238099BC00487601 /* AppDelegate.swift in Sources */,
 				231387332393513500EC797A /* BookCell.swift in Sources */,
-				4670DA9A2380A28200487601 /* DataTestViewController.swift in Sources */,
 				4670DA8A23809A0600487601 /* BookInputViewController.swift in Sources */,
 				4670DA9423809A4700487601 /* Review.swift in Sources */,
 				4670DA9023809A3300487601 /* ReviewInputViewController.swift in Sources */,
