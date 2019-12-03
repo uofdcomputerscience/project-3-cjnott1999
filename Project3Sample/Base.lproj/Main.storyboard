@@ -69,7 +69,7 @@
                                     <outlet property="bookCoverImageView" destination="8Jn-ih-zjA" id="7hh-GX-GWB"/>
                                     <outlet property="bookTitleLabel" destination="uFb-iI-Igw" id="Bu6-Ax-LcA"/>
                                     <outlet property="reviewAuthorLabel" destination="z77-Xf-t9K" id="xad-jl-DVu"/>
-                                    <segue destination="72S-xS-tsS" kind="show" id="0kh-N0-kLQ"/>
+                                    <segue destination="72S-xS-tsS" kind="show" identifier="ReviewSegue" id="0kh-N0-kLQ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -83,29 +83,57 @@
             </objects>
             <point key="canvasLocation" x="524.63768115942037" y="343.52678571428572"/>
         </scene>
-        <!--View Controller-->
+        <!--Review Detail View Controller-->
         <scene sceneID="98N-bQ-qcE">
             <objects>
-                <viewController id="72S-xS-tsS" sceneMemberID="viewController">
+                <viewController id="72S-xS-tsS" customClass="ReviewDetailViewController" customModule="TLDR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d1s-FG-zJe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="CtT-wl-FhB">
-                                <rect key="frame" x="172.5" y="103" width="69" height="33"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="clV-Oa-2xu">
+                                <rect key="frame" x="172.5" y="103" width="69" height="67.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="CtT-wl-FhB">
+                                        <rect key="frame" x="0.0" y="0.0" width="69" height="32.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UcC-1H-CkK">
+                                        <rect key="frame" x="16" y="49.5" width="37.5" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="A94-IZ-QHi">
+                                <rect key="frame" x="10" y="190" width="394" height="613"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="CtT-wl-FhB" firstAttribute="centerX" secondItem="d1s-FG-zJe" secondAttribute="centerX" id="Onv-Sj-nPo"/>
-                            <constraint firstItem="CtT-wl-FhB" firstAttribute="top" secondItem="3Kb-zK-ofi" secondAttribute="top" constant="15" id="XrX-nj-sGc"/>
+                            <constraint firstItem="A94-IZ-QHi" firstAttribute="leading" secondItem="3Kb-zK-ofi" secondAttribute="leading" constant="10" id="2c5-aX-nYm"/>
+                            <constraint firstItem="clV-Oa-2xu" firstAttribute="top" secondItem="3Kb-zK-ofi" secondAttribute="top" constant="15" id="CPp-4D-G5n"/>
+                            <constraint firstItem="3Kb-zK-ofi" firstAttribute="bottom" secondItem="A94-IZ-QHi" secondAttribute="bottom" constant="10" id="CpF-rB-e1w"/>
+                            <constraint firstItem="3Kb-zK-ofi" firstAttribute="trailing" secondItem="A94-IZ-QHi" secondAttribute="trailing" constant="10" id="YUy-Zt-SsW"/>
+                            <constraint firstItem="A94-IZ-QHi" firstAttribute="top" secondItem="UcC-1H-CkK" secondAttribute="bottom" constant="19.5" id="c6a-uY-J1p"/>
+                            <constraint firstItem="clV-Oa-2xu" firstAttribute="centerX" secondItem="d1s-FG-zJe" secondAttribute="centerX" id="v0k-6S-huI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3Kb-zK-ofi"/>
                     </view>
                     <navigationItem key="navigationItem" id="hk1-qO-fzW"/>
+                    <connections>
+                        <outlet property="reviewAuthorLabel" destination="UcC-1H-CkK" id="WPg-NT-bAz"/>
+                        <outlet property="reviewText" destination="A94-IZ-QHi" id="3NM-Vf-BZQ"/>
+                        <outlet property="reviewTitleLabel" destination="CtT-wl-FhB" id="9Mw-1g-IF2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tSh-zy-wQq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

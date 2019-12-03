@@ -14,11 +14,13 @@ class ReviewListViewController: UIViewController {
     @IBOutlet var reviewsTable: UITableView!
     let reviewService = ReviewService.shared
     let bookService = BookService.shared
+    let reviewSegue = "ReviewSegue"
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         reviewsTable.dataSource = self
+        reviewsTable.delegate = self
         
         fetchReviews()
         
@@ -33,10 +35,23 @@ class ReviewListViewController: UIViewController {
            }
        }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == reviewSegue,
+            let destination = segue.destination as? ReviewDetailViewController
+        {
+           let selectedCell = reviewsTable.cellForRow(at: reviewsTable.indexPathForSelectedRow!) as! ReviewCell
+            destination.reviewAuthor = selectedCell.review!.reviewer
+            destination.reviewTitle = selectedCell.review!.title
+            destination.review = selectedCell.review!.body
+            
+            
+        }
+    }
+    
 
 }
 
-extension ReviewListViewController: UITableViewDataSource{
+extension ReviewListViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return reviewService.reviews.count
     }
@@ -49,6 +64,7 @@ extension ReviewListViewController: UITableViewDataSource{
         
         if let reviewCell = cell as? ReviewCell{
             reviewCell.book = book
+            reviewCell.review = review
             bookService.image(for: book) { (retrievedBook, image) in
                 if reviewCell.book?.id == retrievedBook.id {
                               DispatchQueue.main.async {
@@ -62,6 +78,11 @@ extension ReviewListViewController: UITableViewDataSource{
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+         tableView.deselectRow(at: indexPath, animated: true)
+          
+      }
     
     
     
