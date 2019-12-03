@@ -13,11 +13,13 @@ class ReviewListViewController: UIViewController {
     
     @IBOutlet var reviewsTable: UITableView!
     let reviewService = ReviewService.shared
+    let bookService = BookService.shared
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         reviewsTable.dataSource = self
+        
         fetchReviews()
         
     }
@@ -43,15 +45,24 @@ extension ReviewListViewController: UITableViewDataSource{
         
         let cell = reviewsTable.dequeueReusableCell(withIdentifier: "ReviewCell")!
         let review = reviewService.reviews[indexPath.item]
+        let book = bookService.books.first(where: {$0.id == review.bookId})!
         
         if let reviewCell = cell as? ReviewCell{
-            reviewCell.bookAuthorLabel.text = "Author"
-            reviewCell.reviewAuthorLabel.text = review.reviewer
-            reviewCell.reviewTitleLabel.text = review.title
+            reviewCell.book = book
+            bookService.image(for: book) { (retrievedBook, image) in
+                if reviewCell.book?.id == retrievedBook.id {
+                              DispatchQueue.main.async {
+                                reviewCell.bookCoverImageView.image = image
+                                reviewCell.bookTitleLabel.text = book.title
+                                reviewCell.reviewAuthorLabel.text = review.reviewer
+                              }
+                          }
+                      }
         }
         
         return cell
     }
+    
     
     
 }

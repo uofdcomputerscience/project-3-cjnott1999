@@ -10,7 +10,10 @@ import UIKit
 
 class ReviewCell: UITableViewCell{
     
-    @IBOutlet weak var reviewTitleLabel: UILabel!
-    @IBOutlet weak var bookAuthorLabel: UILabel!
+    @IBOutlet weak var bookCoverImageView: UIImageView!
+    @IBOutlet weak var bookTitleLabel: UILabel!
     @IBOutlet weak var reviewAuthorLabel: UILabel!
+    
+    var book: Book?
+    
 }
