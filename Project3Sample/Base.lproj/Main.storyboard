@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tap for Deatiled Review-->
+        <!--Tap for Detailed Review-->
         <scene sceneID="z7Y-cU-ckh">
             <objects>
                 <viewController id="C1o-0j-FFE" customClass="ReviewListViewController" customModule="TLDR" customModuleProvider="target" sceneMemberID="viewController">
@@ -76,7 +76,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Tap for Deatiled Review" id="09f-td-SaL">
+                    <navigationItem key="navigationItem" title="Tap for Detailed Review" id="09f-td-SaL">
                         <barButtonItem key="backBarButtonItem" title="Back" id="wXF-D8-seB"/>
                     </navigationItem>
                     <connections>
