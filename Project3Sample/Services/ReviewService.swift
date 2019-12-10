@@ -23,7 +23,7 @@ class ReviewService {
                 if let newReviews = try? decoder.decode([Review].self, from: data) {
                    
                     //Filter the sample review, sorry Russell
-                    self?.reviews = newReviews.filter({$0.reviewer != "Russell"})
+                    self?.reviews = newReviews.filter({$0.reviewer != "Russell"}).filter({$0.bookId > 0})
                     completion()
                 }
             }
